@@ -1,4 +1,5 @@
 NEW EFK Stack test
+with Webmin
 
 base repo https://github.com/ap-communications/LForM
 
@@ -10,15 +11,16 @@ LForM collects the log of the next-generation firewall, to visualize the traffic
 # Component
 
 - Java : 1.8.0
-- ElasticSearch : 2.4.6
-- Fluentd(td-agent) : 2.3.1
-- kibana : 4.6.6
-- nginx : 1.10.1
+- ElasticSearch : 6.5.1
+- Fluentd(td-agent) : 3.2.1
+- kibana : 6.5.1
+- nginx : 1.14.1
+- Webmin : 1.900
 
 # System Requirement
 
 - Firewall
-	- Fortigate 5.4.x
+	- Fortigate 5/6
 
 - Server
 	- OS : Centos 7.x
