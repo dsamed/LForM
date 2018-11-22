@@ -64,9 +64,8 @@ autorefresh=1
 type=rpm-md
 EOF
 
-yum -y install $elasticsearch_version
 yum -y install $java_version
-
+yum -y install $elasticsearch_version
 
 ## kibana
 echo "====kibana===="
@@ -154,8 +153,8 @@ echo "====Setting file copy===="
 echo `LForM/elasticsearch/heapmemory_set.sh`
 wait
 
-\cp -pf LForM/elasticsearch/config/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
-\cp -ar LForM/elasticsearch/config/logging.yml /etc/elasticsearch/logging.yml
+#\cp -pf LForM/elasticsearch/config/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
+#\cp -ar LForM/elasticsearch/config/logging.yml /etc/elasticsearch/logging.yml
 #chown elasticsearch:elasticsearch /etc/elasticsearch/elasticsearch.yml
 #chown elasticsearch:elasticsearch /etc/elasticsearch/logging.yml
 #chown elasticsearch:elasticsearch /var/log/elasticsearch/
