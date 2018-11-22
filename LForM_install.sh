@@ -127,6 +127,24 @@ EOF
 yum install -y --enablerepo=nginx $nginx_version
 yum install -y httpd-tools
 
+
+## Webmin
+echo "====Webmin===="
+
+cat <<EOF> /etc/yum.repos.d/webmin.repo
+[Webmin]
+name=Webmin Distribution Neutral
+#baseurl=https://download.webmin.com/download/yum
+mirrorlist=https://download.webmin.com/download/yum/mirrorlist
+gpgcheck=1
+gpgkey=http://www.webmin.com/jcameron-key.asc
+enabled=1
+EOF
+
+yum install -y webmin
+yum install -y perl-Digest-MD5
+
+
 ## Setting file copy
 echo "====Setting file copy===="
 
@@ -194,9 +212,19 @@ cat <<EOF> /etc/firewalld/services/syslog_udp.xml
 </service>
 EOF
 
+cat <<EOF> /etc/firewalld/services/webmin.xml
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+<short>WEBMIN</short>
+<description>Webmin Default Port</description>
+<port protocol="tcp" port="10000"/>
+</service>
+EOF
+
 firewall-cmd --reload > /dev/null
 firewall-cmd --permanent --zone=public --add-service=syslog_tcp > /dev/null
 firewall-cmd --permanent --zone=public --add-service=syslog_udp > /dev/null
+firewall-cmd --permanent --zone=public --add-service=webmin > /dev/null
 firewall-cmd --permanent --add-service=http > /dev/null
 firewall-cmd --reload > /dev/null
 
