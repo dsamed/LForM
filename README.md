@@ -1,6 +1,6 @@
 NEW EFK Stack test
 
-origine repo https://github.com/ap-communications/LForM
+base repo https://github.com/ap-communications/LForM
 
 # LForM
 
