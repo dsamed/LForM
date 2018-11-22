@@ -112,7 +112,7 @@ cat <<EOF> /etc/yum.repos.d/nginx.repo
 name=nginx repo
 baseurl=http://nginx.org/packages/centos/7/x86_64/
 gpgcheck=0
-enabled=1
+enabled=0
 EOF
 
 yum install -y --enablerepo=nginx $nginx_version
@@ -156,10 +156,10 @@ wait
 
 \cp -pf LForM/elasticsearch/config/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
 \cp -ar LForM/elasticsearch/config/logging.yml /etc/elasticsearch/logging.yml
-chown elasticsearch:elasticsearch /etc/elasticsearch/elasticsearch.yml
-chown elasticsearch:elasticsearch /etc/elasticsearch/logging.yml
-chown elasticsearch:elasticsearch /var/log/elasticsearch/
-chown elasticsearch:elasticsearch /var/lib/elasticsearch/
+#chown elasticsearch:elasticsearch /etc/elasticsearch/elasticsearch.yml
+#chown elasticsearch:elasticsearch /etc/elasticsearch/logging.yml
+#chown elasticsearch:elasticsearch /var/log/elasticsearch/
+#chown elasticsearch:elasticsearch /var/lib/elasticsearch/
 
 ### Fluentd
 \cp -pf LForM/fluentd/config/td-agent.conf /etc/td-agent/td-agent.conf
@@ -228,31 +228,31 @@ sed -i -e "/^# End of file$/i * soft nofile 65536\n* hard nofile 65536" /etc/sec
 
 # Disable yum update
 
-echo exclude=td-agent* kibana* elasticsearch* nginx* java* >> /etc/yum.conf
+#echo exclude=td-agent* kibana* elasticsearch* nginx* java* >> /etc/yum.conf
 
 # LForM database copy
 echo "====LForM database copy===="
 
-mkdir -p /var/lib/LForM/backup
-chown -R elasticsearch:elasticsearch /var/lib/LForM/backup/
-cp -pr LForM/LForM_db/* /var/lib/LForM/backup/
+#mkdir -p /var/lib/LForM/backup
+#chown -R elasticsearch:elasticsearch /var/lib/LForM/backup/
+#cp -pr LForM/LForM_db/* /var/lib/LForM/backup/
 
-systemctl start elasticsearch.service
-sleep 120s
-systemctl status elasticsearch.service
+#systemctl start elasticsearch.service
+#sleep 120s
+#systemctl status elasticsearch.service
 
-curl -XPUT 'http://localhost:9200/_snapshot/LForM_snapshot' -d '{
-    "type": "fs",
-    "settings": {
-        "location": "/var/lib/LForM/backup/",
-        "compress": true
-    }
-}'
+#curl -XPUT 'http://localhost:9200/_snapshot/LForM_snapshot' -d '{
+#    "type": "fs",
+#    "settings": {
+#        "location": "/var/lib/LForM/backup/",
+#        "compress": true
+#    }
+#}'
 
-curl -XPOST localhost:9200/_snapshot/LForM_snapshot/snapshot_kibana/_restore
+#curl -XPOST localhost:9200/_snapshot/LForM_snapshot/snapshot_kibana/_restore
 
-echo `LForM/LForM_format.sh`
-wait
+#echo `LForM/LForM_format.sh`
+#wait
 
 ## Logrotate Settings
 
