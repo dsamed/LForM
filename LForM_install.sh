@@ -51,6 +51,8 @@ systemctl restart rsyslog
 ## Elasticsearch
 echo "====Elasticsearch===="
 
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
 cat <<EOF> /etc/yum.repos.d/elasticsearch.repo
 [elasticsearch-6.x]
 name=Elasticsearch repository for 6.x packages
@@ -149,15 +151,15 @@ yum install -y perl-Digest-MD5
 echo "====Setting file copy===="
 
 ### kibana
-\cp -pf LForM/kibana/config/kibana.yml /opt/kibana/config/kibana.yml
-cp -pf /opt/kibana/src/ui/views/ui_app.jade /opt/kibana/src/ui/views/ui_app.jade.`date '+%Y%m%d'`
-\cp -pf LForM/kibana/ui_app.jade /opt/kibana/src/ui/views/
-cp -pf /opt/kibana/src/ui/views/chrome.jade /opt/kibana/src/ui/views/chrome.jade.`date '+%Y%m%d'`
-\cp -pf LForM/kibana/chrome.jade /opt/kibana/src/ui/views/
-cp -pf /opt/kibana/optimize/bundles/kibana.bundle.js /opt/kibana/optimize/bundles/kibana.bundle.js.`date '+%Y%m%d'`
-\cp -pf LForM/kibana/kibana.bundle.js /opt/kibana/optimize/bundles/
-cp -pf LForM/kibana/LForM.png /opt/kibana/optimize/bundles/src/ui/public/images/
-\cp -pf LForM/kibana/elk.ico /opt/kibana/optimize/bundles/src/ui/public/images/
+\cp -pf LForM/kibana/config/kibana.yml /etc/kibana/kibana.yml
+#cp -pf /opt/kibana/src/ui/views/ui_app.jade /opt/kibana/src/ui/views/ui_app.jade.`date '+%Y%m%d'`
+#\cp -pf LForM/kibana/ui_app.jade /opt/kibana/src/ui/views/
+#cp -pf /opt/kibana/src/ui/views/chrome.jade /opt/kibana/src/ui/views/chrome.jade.`date '+%Y%m%d'`
+#\cp -pf LForM/kibana/chrome.jade /opt/kibana/src/ui/views/
+#cp -pf /opt/kibana/optimize/bundles/kibana.bundle.js /opt/kibana/optimize/bundles/kibana.bundle.js.`date '+%Y%m%d'`
+#\cp -pf LForM/kibana/kibana.bundle.js /opt/kibana/optimize/bundles/
+#cp -pf LForM/kibana/LForM.png /opt/kibana/optimize/bundles/src/ui/public/images/
+#\cp -pf LForM/kibana/elk.ico /opt/kibana/optimize/bundles/src/ui/public/images/
 
 ### Elasticsearch
 echo `LForM/elasticsearch/heapmemory_set.sh`
