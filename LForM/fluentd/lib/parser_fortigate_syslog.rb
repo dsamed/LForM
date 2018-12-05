@@ -3,7 +3,7 @@ require 'fluent/parser'
 
 module Fluent
  class TextParser
-  class SyslogParser < Parser
+  class SyslogPaser < Parser
    Plugin.register_parser('fortigate_syslog', self)
 
 
