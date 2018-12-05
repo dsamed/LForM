@@ -1,5 +1,4 @@
 # coding: utf-8
-require 'fluent/parser'
 
 module Fluent
  class TextParser
@@ -61,7 +60,7 @@ module Fluent
 
       #Log emit
       time = Engine.now
-      Engine.emit(tag, time, record_value)
+      router.emit(tag, time, record_value)
     end
 
     def date_formatcheck(datetimestr)
