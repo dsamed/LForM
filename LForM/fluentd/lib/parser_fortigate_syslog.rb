@@ -1,8 +1,9 @@
 # coding: utf-8
+require 'fluent/parser'
 
 module Fluent
  class TextParser
-  class SyslogPaser < Parser
+  class SyslogParser < Parser
    Plugin.register_parser('fortigate_syslog', self)
 
 
