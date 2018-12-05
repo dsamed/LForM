@@ -165,8 +165,8 @@ echo "====Setting file copy===="
 \cp -pf LForM/fluentd/lib/parser_fortigate_syslog.rb /etc/td-agent/plugin/parser_fortigate_syslog.rb
 #\cp -pf LForM/fluentd/lib/snmp_get_out_exec.rb /opt/LForM/fluentd/lib/
 
-sed -i -e "s/TD_AGENT_USER=td-agent/TD_AGENT_USER=root/g" /etc/init.d/td-agent
-sed -i -e "s/TD_AGENT_GROUP=td-agent/TD_AGENT_GROUP=root/g" /etc/init.d/td-agent
+sed -i -e "s/User=td-agent/User=root/g" /etc/init.d/td-agent
+sed -i -e "s/Group=td-agent/Group=root/g" /etc/init.d/td-agent
 
 ### nginx
 cp -p /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.`date '+%Y%m%d'`
