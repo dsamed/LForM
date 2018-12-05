@@ -13,9 +13,9 @@ java_version="java-1.8.0"
 curator_version="5.6.0"
 fluentd_version="td-agent-3.2.1"
 gem_elastic_version="2.12.1"
-gem_polling_version="0.1.5"
-gem_snmp_version="1.3.1"
-gem_fluent_snmp_version="0.0.9"
+#gem_polling_version="0.1.5"
+#gem_snmp_version="1.3.1"
+#gem_fluent_snmp_version="0.0.9"
 kibana_version="kibana-6.5.1"
 nginx_version="nginx-1.14.1"
 
@@ -92,9 +92,9 @@ yum -y install initscripts
 echo "====Fluentd Plugin===="
 
 td-agent-gem install fluent-plugin-elasticsearch -v $gem_elastic_version
-td-agent-gem install polling  -v $gem_polling_version
-td-agent-gem install snmp -v $gem_snmp_version
-td-agent-gem install fluent-plugin-snmp -v $gem_fluent_snmp_version 
+#td-agent-gem install polling  -v $gem_polling_version
+#td-agent-gem install snmp -v $gem_snmp_version
+#td-agent-gem install fluent-plugin-snmp -v $gem_fluent_snmp_version 
  
  
 ## curator
@@ -139,7 +139,7 @@ yum install -y perl-Digest-MD5
 echo "====Setting file copy===="
 
 ### kibana
-\cp -pf LForM/kibana/config/kibana.yml /etc/kibana/kibana.yml
+#\cp -pf LForM/kibana/config/kibana.yml /etc/kibana/kibana.yml
 #cp -pf /opt/kibana/src/ui/views/ui_app.jade /opt/kibana/src/ui/views/ui_app.jade.`date '+%Y%m%d'`
 #\cp -pf LForM/kibana/ui_app.jade /opt/kibana/src/ui/views/
 #cp -pf /opt/kibana/src/ui/views/chrome.jade /opt/kibana/src/ui/views/chrome.jade.`date '+%Y%m%d'`
@@ -150,8 +150,8 @@ echo "====Setting file copy===="
 #\cp -pf LForM/kibana/elk.ico /opt/kibana/optimize/bundles/src/ui/public/images/
 
 ### Elasticsearch
-echo `LForM/elasticsearch/heapmemory_set.sh`
-wait
+#echo `LForM/elasticsearch/heapmemory_set.sh`
+#wait
 
 #\cp -pf LForM/elasticsearch/config/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
 #\cp -ar LForM/elasticsearch/config/logging.yml /etc/elasticsearch/logging.yml
@@ -163,7 +163,7 @@ wait
 ### Fluentd
 \cp -pf LForM/fluentd/config/td-agent.conf /etc/td-agent/td-agent.conf
 \cp -pf LForM/fluentd/lib/parser_fortigate_syslog.rb /etc/td-agent/plugin/parser_fortigate_syslog.rb
-\cp -pf LForM/fluentd/lib/snmp_get_out_exec.rb /opt/LForM/fluentd/lib/
+#\cp -pf LForM/fluentd/lib/snmp_get_out_exec.rb /opt/LForM/fluentd/lib/
 
 sed -i -e "s/TD_AGENT_USER=td-agent/TD_AGENT_USER=root/g" /etc/init.d/td-agent
 sed -i -e "s/TD_AGENT_GROUP=td-agent/TD_AGENT_GROUP=root/g" /etc/init.d/td-agent
