@@ -1,5 +1,4 @@
-# coding: utf-8
-
+require 'fluent/plugin/parser'
 module Fluent
  class TextParser
   class SyslogParser < Parser
