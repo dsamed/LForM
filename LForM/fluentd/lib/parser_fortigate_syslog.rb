@@ -1,6 +1,5 @@
 require 'fluent/plugin/parser'
-module Fluent
- class TextParser
+ class Fluent::TextParser::Parser
   class SyslogParser < Parser
    Plugin.register_parser('fortigate_syslog', self)
 
