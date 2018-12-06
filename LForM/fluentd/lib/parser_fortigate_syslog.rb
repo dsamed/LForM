@@ -59,7 +59,7 @@ module Fluent
       end
 
       #Log emit
-      time = Engine.now
+      time = emit.now
       router.emit(tag, time, record_value)
     end
 
