@@ -1,7 +1,9 @@
 require 'fluent/plugin/parser'
- class Fluent::Plugin::Parser
-  class SyslogParser < Parser
-   Plugin.register_parser('fortigate_syslog', self)
+module Fluent
+  module Plugin
+    class TextParser
+     class SyslogParser < Parser
+      Fluent::Plugin.register_parser('fortigate_syslog', self)
 
 
     def initialize
@@ -73,3 +75,5 @@ require 'fluent/plugin/parser'
 
   end
  end
+end
+end
