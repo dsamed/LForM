@@ -73,4 +73,3 @@ require 'fluent/plugin/parser'
 
   end
  end
-end
