@@ -45,7 +45,7 @@ module Fluent
       }
 
       if date_formatcheck(datetime) != false then
-        record_value["receive_time"] = time_transformation(datetime)
+        record_value["eventtime"] = time_transformation(datetime)
       else
         raise "ERR002:syslog format error(receive_time is not defined)"
       end
