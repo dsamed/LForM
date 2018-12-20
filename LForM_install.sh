@@ -11,8 +11,8 @@ echo `date`
 elasticsearch_version="elasticsearch-6.5.1"
 java_version="java-1.8.0"
 curator_version="5.6.0"
-fluentd_version="td-agent-3.2.1"
-gem_elastic_version="2.12.1"
+fluentd_version="td-agent-2.3.1"
+gem_elastic_version="1.11.0"
 #gem_polling_version="0.1.5"
 #gem_snmp_version="1.3.1"
 #gem_fluent_snmp_version="0.0.9"
@@ -80,7 +80,7 @@ echo "====Fluentd===="
 cat <<EOF> /etc/yum.repos.d/td.repo
 [treasuredata]
 name=TreasureData
-baseurl=http://packages.treasuredata.com/3/redhat/\$releasever/\$basearch
+baseurl=http://packages.treasuredata.com/2/redhat/\$releasever/\$basearch
 gpgcheck=0
 gpgkey=https://packages.treasuredata.com/GPG-KEY-td-agent
 EOF
@@ -163,10 +163,10 @@ echo "====Setting file copy===="
 ### Fluentd
 \cp -pf LForM/fluentd/config/td-agent.conf /etc/td-agent/td-agent.conf
 \cp -pf LForM/fluentd/lib/parser_fortigate_syslog.rb /etc/td-agent/plugin/parser_fortigate_syslog.rb
-#\cp -pf LForM/fluentd/lib/snmp_get_out_exec.rb /opt/LForM/fluentd/lib/
+\cp -pf LForM/fluentd/lib/snmp_get_out_exec.rb /opt/LForM/fluentd/lib/
 
-sed -i -e "s/User=td-agent/User=root/g" /etc/init.d/td-agent
-sed -i -e "s/Group=td-agent/Group=root/g" /etc/init.d/td-agent
+sed -i -e "s/TD_AGENT_USER=td-agent/TD_AGENT_USER=root/g" /etc/init.d/td-agent
+sed -i -e "s/TD_AGENT_GROUP=td-agent/TD_AGENT_GROUP=root/g" /etc/init.d/td-agent
 
 ### nginx
 cp -p /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.`date '+%Y%m%d'`
