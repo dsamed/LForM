@@ -8,7 +8,7 @@ echo `date`
 
 # Version definition
 
-elasticsearch_version="elasticsearch-6.5.1"
+elasticsearch_version="elasticsearch-6.5.4"
 java_version="java-1.8.0"
 curator_version="5.6.0"
 fluentd_version="td-agent-2.3.1"
@@ -16,8 +16,8 @@ gem_elastic_version="1.11.0"
 #gem_polling_version="0.1.5"
 #gem_snmp_version="1.3.1"
 #gem_fluent_snmp_version="0.0.9"
-kibana_version="kibana-6.5.1"
-nginx_version="nginx-1.14.1"
+kibana_version="kibana-6.5.4"
+nginx_version="nginx-1.14.2"
 
 # Preparation
 

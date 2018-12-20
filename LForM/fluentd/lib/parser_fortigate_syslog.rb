@@ -54,6 +54,10 @@ module Fluent
         tag = "syslog_traffic.forti"
       elsif record_value["type"] == "utm" then
         tag = "syslog_security.forti"
+      elsif record_value["type"] == "event" then
+        tag = "syslog_event.forti"
+      elsif record_value["type"] == "dns" then
+        tag = "syslog_dns.forti"
       else
         raise "ERR003:syslog format error(type definition error)"
       end
