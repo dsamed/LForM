@@ -24,23 +24,23 @@ module Fluent
 
     def logemit(syslog_value)
       # emit to elasticsearch
-#      record_value = {}
-#      date = ""
-#      datetime = ""
-#      syslog_value.each{|value|
-#
-#        record = value.split("=")
-#        k = record[0]
-#        v = record[1]
-#        # date and time combining
-#        case k
-#          when "date" then
-#            date = v
-#            next
-#          when "time" then
-#            datetime = date.concat(" " + v)
-#            next
-#        end
+      record_value = {}
+      date = ""
+      datetime = ""
+      syslog_value.each{|value|
+
+        record = value.split("=")
+        k = record[0]
+        v = record[1]
+        # date and time combining
+        case k
+          when "date" then
+            date = v
+            next
+          when "time" then
+            datetime = date.concat(" " + v)
+            next
+        end
         record_value["#{k}"] = (v == nil || v == "") ? nil : v.tr("\"","")
       }
 
