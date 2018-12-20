@@ -42,7 +42,7 @@ module Fluent
 #            next
 #        end
         record_value["#{k}"] = (v == nil || v == "") ? nil : v.tr("\"","")
-      }
+#      }
 
       if date_formatcheck(datetime) != false then
         record_value["eventtime"] = time_transformation(datetime)
