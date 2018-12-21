@@ -11,11 +11,13 @@ echo `date`
 elasticsearch_version="elasticsearch-6.5.4"
 java_version="java-1.8.0"
 curator_version="5.6.0"
-fluentd_version="td-agent-2.3.1"
-gem_elastic_version="1.11.0"
+fluentd_version="td-agent-2.5.0"
+gem_elastic_version="1.18.0"
 #gem_polling_version="0.1.5"
 #gem_snmp_version="1.3.1"
 #gem_fluent_snmp_version="0.0.9"
+geoip_version="1.5.0"
+gem_fluent-geoip_version=""
 kibana_version="kibana-6.5.4"
 nginx_version="nginx-1.14.2"
 
@@ -95,8 +97,10 @@ td-agent-gem install fluent-plugin-elasticsearch -v $gem_elastic_version
 #td-agent-gem install polling  -v $gem_polling_version
 #td-agent-gem install snmp -v $gem_snmp_version
 #td-agent-gem install fluent-plugin-snmp -v $gem_fluent_snmp_version 
- 
- 
+
+yum install -y geoip-devel $geoip_version
+td-agent-gem install fluent-plugin-geoip -v $gem_fluent-geoip_version
+
 ## curator
 echo "====curator===="
 
