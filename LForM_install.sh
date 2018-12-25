@@ -17,7 +17,7 @@ gem_elastic_version="1.18.0"
 #gem_snmp_version="1.3.1"
 #gem_fluent_snmp_version="0.0.9"
 geoip_version="1.5.0"
-gem_fluent-geoip_version=""
+gem_fluent-geoip_version="0.82"
 kibana_version="kibana-6.5.4"
 nginx_version="nginx-1.14.2"
 
