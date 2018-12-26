@@ -82,7 +82,7 @@ echo "====Fluentd===="
 cat <<EOF> /etc/yum.repos.d/td.repo
 [treasuredata]
 name=TreasureData
-baseurl=http://packages.treasuredata.com/2/redhat/\$releasever/\$basearch
+baseurl=http://packages.treasuredata.com/2.5/redhat/\$releasever/\$basearch
 gpgcheck=0
 gpgkey=https://packages.treasuredata.com/GPG-KEY-td-agent
 EOF
